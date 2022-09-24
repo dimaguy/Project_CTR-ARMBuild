@@ -54,7 +54,7 @@ jobs:
         with:
           copy_artifact_path: ./makerom/bin/makerom
           commands: |
-            make deps all
+            make all
       - uses: actions/upload-artifact@v2
         with:
           name: Upload Artifact
