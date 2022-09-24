@@ -50,10 +50,11 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - run: mkdir -p makerom/bin/
       - uses: pguyot/arm-runner-action@v2
         with:
-          copy_artifact_path: makerom/bin/makerom
-          copy_artifact_dest: makerom/bin/makerom
+          copy_artifact_path: makerom/bin/
+          copy_artifact_dest: makerom/bin/
           commands: |
             cd makerom
             make deps all
