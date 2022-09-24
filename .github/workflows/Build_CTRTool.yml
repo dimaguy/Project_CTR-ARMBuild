@@ -82,7 +82,7 @@ jobs:
           copy_artifact_path: ctrtool/bin/
           copy_artifact_dest: ctrtool/bin/
           commands: |
-            cd makerom
+            cd ctrtool
             make deps all
       - uses: actions/upload-artifact@v2
         with:
