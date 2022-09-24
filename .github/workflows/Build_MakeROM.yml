@@ -61,4 +61,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: Upload Artifact
-          path: ./makerom/bin/makerom
+          path: ./makerom/bin/*
