@@ -55,7 +55,8 @@ jobs:
           copy_artifact_path: makerom/bin/makerom
           copy_artifact_dest: makerom/bin/makerom
           commands: |
-            make all
+            cd makerom
+            make deps all
       - uses: actions/upload-artifact@v2
         with:
           name: Upload Artifact
