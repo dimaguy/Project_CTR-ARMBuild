@@ -53,6 +53,7 @@ jobs:
       - uses: pguyot/arm-runner-action@v2
         with:
           copy_artifact_path: makerom/bin/makerom
+          copy_artifact_dest: makerom/bin/makerom
           commands: |
             make all
       - uses: actions/upload-artifact@v2
