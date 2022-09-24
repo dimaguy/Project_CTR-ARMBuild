@@ -39,7 +39,7 @@ jobs:
           path: ./${{ matrix.prog }}/bin/${{ matrix.prog }}
           if-no-files-found: error
   build_visualstudio:
-    name: Compile ${{ matrix.prog }} for ${{ matrix.dist }}
+    name: Compile ${{ matrix.prog }} for ${{ matrix.dist }} (VS)
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -69,4 +69,22 @@ jobs:
         name: ${{ matrix.prog }}-${{ matrix.dist }}
         path: .\${{ matrix.prog }}\build\visualstudio\${{ matrix.build_path }}\${{ matrix.prog }}.exe
         if-no-files-found: error
-
+  buildarm:
+    name: Build for Linux ARM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: mkdir -p ctrtool/bin/
+      - uses: pguyot/arm-runner-action@v2
+        with:
+          copy_artifact_path: ctrtool/bin/
+          copy_artifact_dest: ctrtool/bin/
+          commands: |
+            cd makerom
+            make deps all
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Linux armhf
+          path: ./ctrtool/bin/*
